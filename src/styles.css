@@ -1,0 +1,296 @@
+/* ---------- Темы ---------- */
+:root {
+  --bg: #0e0f1a;
+  --panel: #151728;
+  --card: #181a2e;
+  --border: #272a44;
+  --text: #ecebf5;
+  --muted: #8b8fa8;
+  --accent: #8b7bff;
+  --accent-soft: rgba(139, 123, 255, 0.14);
+  --ok: #4ade80;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+:root[data-theme='light'] {
+  --bg: #f6f4ef;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --border: #e3dfd5;
+  --text: #1c1b2e;
+  --muted: #6b6a7c;
+  --accent: #5b3fe0;
+  --accent-soft: rgba(91, 63, 224, 0.1);
+  --ok: #16a34a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.55;
+  transition: background 0.25s, color 0.25s;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.mono { font-family: var(--mono); }
+
+/* ---------- Макет ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  max-width: 1120px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 36px 32px;
+  border-right: 1px solid var(--border);
+}
+
+.content {
+  padding: 36px 40px 80px;
+  min-width: 0;
+}
+
+/* ---------- Боковая панель ---------- */
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.version {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.theme-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.theme-btn:hover { border-color: var(--accent); }
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.name {
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.role { margin: 0; color: var(--muted); }
+.role b { color: var(--accent); font-weight: 600; }
+.learning { margin: 2px 0 18px; color: var(--muted); font-size: 14px; }
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-size: 13px;
+  margin-bottom: 26px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 0 var(--ok);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 26px;
+}
+.nav a {
+  color: var(--muted);
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.nav a:hover { background: var(--accent-soft); color: var(--text); text-decoration: none; }
+
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 14px;
+  font-size: 14px;
+}
+.contacts li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.contact-label { width: 52px; font-size: 11px; color: var(--muted); text-transform: uppercase; }
+.contact-value { word-break: break-all; }
+
+.copy-btn {
+  margin-left: 62px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  padding: 3px 9px;
+  cursor: pointer;
+}
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Секции ---------- */
+.section { padding: 0 0 48px; scroll-margin-top: 24px; }
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 22px;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.section-index {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.stack { display: grid; gap: 14px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.card-title { margin: 0; font-size: 17px; }
+.card-sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.card-date { color: var(--muted); font-size: 12px; white-space: nowrap; padding-top: 4px; }
+
+.role-line { margin-top: 12px; font-size: 14px; }
+.role-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.list li { margin-bottom: 4px; }
+.list li::marker { color: var(--accent); }
+
+/* ---------- Чипы и навыки ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+.chip {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+.chip-learning {
+  border-style: dashed;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.skill-group {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px 18px;
+}
+.skill-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.skill-group .chips { margin-top: 10px; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 28px 20px;
+  }
+  .nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .content { padding: 28px 20px 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
